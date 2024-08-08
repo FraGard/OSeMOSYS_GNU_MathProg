@@ -5,4 +5,4 @@ Note that to test the functionality you need the version of OSeMOSYS from this b
 
 The Reference Energy System represented by this simple model is illustrated in the figure below.
 
-![Reference Energy system - Storage](../figures/RES_storage.png)
+![Reference Energy system - Storage](figures/RES_storage.png)
