@@ -18,38 +18,11 @@ you'll want to create it:
 
     mkdir results
 
-Now enter the following line into your command prompt:
+Now enter the following line into your command prompt, in order to run the test model for storage:
 
-    glpsol -m osemosys.txt -d  simplicity.txt
+    glpsol -m osemosys.txt -d  storage_test.txt
 
 The results from the model run should be available in the `results` folder.
-
-### Short and Fast versions of the code
-
-Alternatively, you can run the "short" or "fast" versions of the OSeMOSYS code.
-These versions of the OSeMOSYS code produce the same results as the original version, but are written
-using a more concise form which condenses many of the equations. For larger models that are more
-computationally expensive, the short and fast versions will provide a significant performance boost.
-However, for development purposes, the original version of the OSeMOSYS code is much easier to understand. 
-
-    glpsol -m osemosys_short.txt -d  simplicity.txt
-    glpsol -m osemosys_fast.txt -d  simplicity.txt
-
-### Running using other solvers
-
-Running using CBC or CLP is a little more involved, as it requires two separate steps.
-First, an LP file is generated using glpsol:
-
-    glpsol -m osemosys_short.txt -d simplicity.txt --wlp simplicity.lp --check
-
-Then the LP file is passed to the CBC (or CLP) solver to produce a solution file:
-
-    cbc simplicity.lp solve -solu simplicity.sol
-
-The solution file is written out in a format that requires post-processing. We recommend using
-the open-source Python package **otoole** to do this for you:
-
-    otoole results cbc csv simplicity.sol results --input_datafile simplicity.txt
 
 ## Installation
 
@@ -95,13 +68,6 @@ description for each of the equation blocks in the model file (`osemosys.txt`).
 
 You can read the [OSeMOSYS documentation online](https://osemosys.readthedocs.io/en/latest/?badge=latest).
 
-### Forum
-
-The [Google Groups OSeMOSYS forum](https://groups.google.com/u/1/g/osemosys) 
-contains a large number of questions and answers and is useful and active
-source of information for how to use OSeMOSYS and tackle all sorts of
-OSeMOSYS modelling issues.
-
 ### Github Issues
 
 The OSeMOSYS source code and issue tracker are located on [Github](https://github.com/OSeMOSYS/OSeMOSYS_GNU_MathProg).
@@ -111,9 +77,7 @@ If you think you have identified a bug, or want to suggest an enhancement, pleas
 
 ### Training materials
 
-- [Understanding the Energy System Lecture Slides](http://www.osemosys.org/understanding-the-energy-system.html) 
-by OSeMOSYS Team
-- [OSeMOSYS Video Lectures](https://www.youtube.com/watch?v=U9Z4GE_l9mQ&list=PLY5NLA2BTufKU_wDSp-JzP6dhpzwsg1Xx) by OSeMOSYS Team
+Material to understand the modelling of storage in OSeMOSYS is available here: https://zenodo.org/records/13269708. 
 
 ### OSeMOSYS website
 
