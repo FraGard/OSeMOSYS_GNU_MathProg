@@ -1451,7 +1451,7 @@ table UseByTechnologyResults
 table NetChargeWithinDayResults
 	{r in REGION, s in STORAGE, ls in SEASON, ld in DAYTYPE, lh in DAILYTIMEBRACKET, y in YEAR:
 
-		NetChargeWithinDay[r,s,ls,ld,lh,y] > 0}
+		NetChargeWithinDay[r,s,ls,ld,lh,y]}
 
 	OUT "CSV"
 	ResultsPath & "/NetChargeWithinDay.csv" :
