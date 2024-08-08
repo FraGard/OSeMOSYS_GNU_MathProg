@@ -77,7 +77,7 @@ If you think you have identified a bug, or want to suggest an enhancement, pleas
 
 ### Training materials
 
-Material to understand the modelling of storage in OSeMOSYS is available here: https://zenodo.org/records/13269708. 
+Material to understand the modelling of storage in OSeMOSYS is available here: https://zenodo.org/records/13269707. 
 
 ### OSeMOSYS website
 
