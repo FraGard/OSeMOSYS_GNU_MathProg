@@ -1,6 +1,8 @@
 # GNU MathProg Tests
 
-The purpose of the testing file4s contained in this folder is to
-ensure that the outputs received from the two versions of the
-GNU MathProg implementations of OSeMOSYS match what is expected
-for a given model file.
+Here we provide a simple model to test the functionality of storage in the master version of OSeMOSYS.
+Note that to test the functionality you need the version of OSeMOSYS from this branch, where we added lines to print out the variable NetChargeWithinDay.
+
+The Reference Energy System represented by this simple model is illustrated in the figure below.
+
+![Reference Energy system - Storage](../figures/RES_storage.png)

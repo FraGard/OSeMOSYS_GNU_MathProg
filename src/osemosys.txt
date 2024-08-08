@@ -1131,7 +1131,35 @@ for {r in REGION} {printf ",%s", r >> ResultsPath & "/SelectedResults.csv";
                                                 printf "\n" >> ResultsPath & "/SelectedResults.csv";
                                                                                         }
                                         }
-
+#
+###		Technology Use in each TS	###
+#
+printf "\n" >> "SelectedResults.csv";
+printf "Net Charge Within Day (Energy Units)" >> "SelectedResults.csv";
+printf "\n" >> "SelectedResults.csv";
+printf "\n" >> "SelectedResults.csv";
+for {r in REGION} {printf ",%s", r >> "SelectedResults.csv";
+	printf "\n" >> "SelectedResults.csv";
+	for {s in STORAGE} {printf "%s", s >> "SelectedResults.csv";
+					for {ls in SEASON}{
+						for {ld in DAYTYPE}{
+							for {lh in DAILYTIMEBRACKET}{printf ",%s", lh >> "SelectedResults.csv";
+								}
+						}
+					}
+					printf "\n" >> "SelectedResults.csv";
+					for {y in YEAR } {printf "%g", y >> "SelectedResults.csv";
+						for {ls in SEASON}{
+							for {ld in DAYTYPE}{
+								for { lh in DAILYTIMEBRACKET} {
+										printf ",%g", NetChargeWithinDay[r,s,ls,ld,lh,y] >> "SelectedResults.csv";
+								}
+							}
+						}
+						printf "\n" >> "SelectedResults.csv";
+					}
+	}
+}	
 
 table AccumulatedNewCapacityResults
 	{r in REGION, t in TECHNOLOGY, y in YEAR:
@@ -1419,7 +1447,15 @@ table UseByTechnologyResults
 	OUT "CSV"
 	ResultsPath & "/UseByTechnology.csv" :
 	r~REGION, l~TIMESLICE, t~TECHNOLOGY, f~FUEL, y~YEAR, UseByTechnology[r, l, t, f, y]~VALUE;
-			
-			 
+
+table NetChargeWithinDayResults
+	{r in REGION, s in STORAGE, ls in SEASON, ld in DAYTYPE, lh in DAILYTIMEBRACKET, y in YEAR:
+
+		NetChargeWithinDay[r,s,ls,ld,lh,y] > 0}
+
+	OUT "CSV"
+	ResultsPath & "/NetChargeWithinDay.csv" :
+	r~REGION, s~STORAGE, ls~SEASON, ld~DAYTYPE, lh~DAILYTIMEBRACKET, y~YEAR, NetChargeWithinDay[r,s,ls,ld,lh,y]~VALUE;
+ 
 
 end;
